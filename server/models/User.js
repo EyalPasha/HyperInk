@@ -3,6 +3,10 @@ const {Schema} = mongoose;
 
 const UserSchema = new Schema({
 
+        isAdmin: {
+            type: Boolean,
+            default: false
+        },
         firstName: {
             type: String,
             min: 2,

@@ -18,6 +18,7 @@ import userRoutes from "./routes/user.js"
 import storeRoutes from "./routes/store.js"
 import adminRoutes from "./routes/admin.js"
 import Store from "./models/Store.js";
+import {verifyAdminToken, verifyUserToken} from "./middleware/auth.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -41,8 +42,8 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* ROUTES */
 
-app.use('/api/user', userRoutes)
-app.use('/api/admin', adminRoutes)
+app.use('/api/user',verifyUserToken, userRoutes)
+app.use('/api/admin',verifyAdminToken, adminRoutes)
 app.use('/api/store', storeRoutes)
 app.use('/api/auth', authRoutes)
 
