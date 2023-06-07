@@ -7,6 +7,8 @@ const router = express.Router()
 /* CREATE */
 router.post('/add-item',adminAddItem)
 
+
+/* UPDATE */
 router.patch('/edit-item/:itemId', adminEditItem)
 router.patch('/edit-inventory/:itemId', adminEditInventory)
 
