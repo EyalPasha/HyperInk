@@ -6,3 +6,35 @@ main  {
 h1 {
     font-size: 24px;
 }
+
+.pro-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+.pro {
+    width: 23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.02);
+    margin: 15px 0; 
+    transition: 0.2s ease;
+}
+
+.pro:hover {
+    box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.06); 
+}
+
+.pro img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.pro .des span {
+    color: #cce7d0;
+    font-size: 12px;
+}
