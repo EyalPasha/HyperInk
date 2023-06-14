@@ -5,7 +5,8 @@ const ItemSchema = new Schema({
 
         name:{
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         category: {
             type: String,
@@ -13,22 +14,21 @@ const ItemSchema = new Schema({
         colors: [
             {
                 colorName: {
-                        name: {
-                        type: String
+                    type: String
+                },
+                size:[
+                    {
+                        sizeName: {
+                            type: String
                         },
-                        size:[
-                            {
-                                name: {
-                                    type: String
-                                },
-                                stock: {
-                                    type: Number,
-                                    min: 0
+                        stock: {
+                            type: Number,
+                            min: 0
                                 }
-                            }
-                        ]
+                    }
+                    ]
                 }
-            }
+
         ],
 
         imageUrl: {

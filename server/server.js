@@ -40,8 +40,8 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* ROUTES */
 
-app.use('/api/user',verifyUserToken, userRoutes)
-app.use('/api/admin',verifyAdminToken, adminRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/admin', adminRoutes)
 app.use('/api/store', storeRoutes)
 app.use('/api/auth', authRoutes)
 

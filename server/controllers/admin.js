@@ -10,8 +10,11 @@ export const adminAddItem = async (req,res) =>{
 
         const {name, category, colors, imageUrl, description} = req.body //colors is an array of sizes and stock
 
+
+
         //fnd the store
         const store = await Store.findById(storeId)
+
 
 
         //if store not exist return
@@ -159,4 +162,80 @@ export const adminEditInventory = async (req, res) =>{
         return res.status(500).json({error})
     }
 
+}
+
+export const adminDeleteItem = async (req,res) =>{
+
+    try{
+
+        const {itemId, categoryName} = req.body
+
+
+        //fnd the store
+        const store = await Store.findById(storeId)
+
+
+        //if store not exist return
+        if(!store){
+            return res.status(404).json({message: "Store not found"})
+        }
+
+        //delte item doc
+        await Item.findByIdAndDelete(itemId)
+
+        //find category name
+        const category = await store.categories.find(cat=> cat.name === categoryName)
+
+
+        const newArray = await category.items.filter(item => item._id === itemId)
+
+        category.items = await newArray
+
+        store.save()
+
+        return res.status(200).json({message: "success"})
+
+
+    }catch(error){
+        return res.status(500).json({error})
+    }
+}
+
+export const adminDeleteCategory = async (req, res) =>{
+
+    try{
+
+        const {categoryName} = req.body
+
+
+        //fnd the store
+        const store = await Store.findById(storeId)
+
+
+        //if store not exist return
+        if(!store){
+            return res.status(404).json({message: "Store not found"})
+        }
+
+
+        //delete category items
+        const category = await store.categories.find(cat=>cat.name === categoryName)
+
+
+        await category.items.forEach(item=> Item.findByIdAndDelete(item._id))
+
+
+        const newCategoryArray = await store.categories.filter(cat=> cat.name !== categoryName)
+
+        store.categories = await newCategoryArray
+
+
+        store.save()
+
+        return res.status(200).json({message: "success"})
+
+
+    }catch(error){
+        return res.status(500).json({error})
+    }
 }

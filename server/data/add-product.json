@@ -1,0 +1,17 @@
+{
+  "name": "new item2",
+  "category": "new category",
+  "imageUrl": "",
+  "description": "",
+  "colors": [
+    {
+      "colorName": "blue",
+      "size": [
+        {
+          "sizeName": "xs",
+          "stock": 6
+        }
+      ]
+    }
+  ]
+}

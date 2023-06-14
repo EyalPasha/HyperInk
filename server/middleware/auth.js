@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const verifyUserToken = async (req,res, next) =>{
 
+
     try {
         const {token} = await req.cookies;
 
@@ -34,6 +35,7 @@ export const verifyUserToken = async (req,res, next) =>{
 }
 
 export const verifyAdminToken = async (req,res, next) =>{
+
 
     try {
         const {token} = await req.cookies;
