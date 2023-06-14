@@ -12,12 +12,10 @@ import cookieParser from "cookie-parser";
 
 
 /* ROUTES IMPORTS */
-
 import authRoutes from "./routes/auth.js"
 import userRoutes from "./routes/user.js"
 import storeRoutes from "./routes/store.js"
 import adminRoutes from "./routes/admin.js"
-import Store from "./models/Store.js";
 import {verifyAdminToken, verifyUserToken} from "./middleware/auth.js";
 
 /* CONFIGURATIONS */
@@ -49,7 +47,7 @@ app.use('/api/auth', authRoutes)
 
 
 /* MONGOOSE SETUP */
-const PORT = process.env.PORT || process.env.PORT2;
+const PORT = process.env.PORT || 6001
 mongoose
     .connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
