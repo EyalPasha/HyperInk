@@ -1,7 +1,14 @@
-
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
 
    body {
-    height: 5000px;
+   }
+
+   .navbar {
+    font-size: 18px;
    }
 
   .cart_icon {
@@ -10,5 +17,8 @@
   }
   .cart_icon:hover{
     border-bottom: 3px solid hsl(140, 1%, 44%);
-    border-top: 3px solid hsl(140, 1%, 44%);
   }
+  
+  .nav-link{
+    margin: 0 10px;
+  } 
