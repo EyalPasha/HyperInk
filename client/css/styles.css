@@ -34,6 +34,7 @@ body, h1, h2, h3, p, ul, li {
   }
   header .navbar {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     letter-spacing: 3px;
@@ -43,11 +44,15 @@ body, h1, h2, h3, p, ul, li {
     margin-inline: 15%;
     font-size: 20px;
     letter-spacing: 3px;
-    padding: 5px 0;
+    padding: 50x 0;
     transition: all .1s ease;
     border-bottom: 0px solid #64d6f4;
     border-top: 0px solid #64d6f4;
     cursor: pointer;
+  }
+  header .nav_item:hover{
+    border-bottom: 3px solid #64d6fd;
+    border-top: 3px solid #64d6fd;;
   }
 
   a {
