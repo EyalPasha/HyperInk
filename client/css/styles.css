@@ -1,140 +1,124 @@
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px;
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
 
-body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-  }
-  
-
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    overflow-x: hidden;
-    font-family: sans-serif;
-    width: 100vw;
-    height: 15em; /* need to change*/
-    box-shadow: 0px 3px 8px rgba(0,0,0,25%);
-  }
-  header .container-fluid{
-    width: 100%;
-    padding: 0 60px;
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-  }
-  header .navbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    letter-spacing: 3px;
-  }
-  header .nav_item {
-    text-align: center;
-    margin-inline: 15%;
-    font-size: 20px;
-    letter-spacing: 3px;
-    padding: 50x 0;
-    transition: all .1s ease;
-    border-bottom: 0px solid #64d6f4;
-    border-top: 0px solid #64d6f4;
+   body {
+    padding-top: 4em;
+   }
+   h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+   }
+   h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+   }
+   h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+   }
+   h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+   }
+   h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #1d1d1d
+   }
+   h6 {
+    color: #D8D8D8
+   }
+   button {
+    font-size: 0.8rem;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    background-color: #1d1d1d;
+    color: aliceblue;
+    padding: 13px 30px;
     cursor: pointer;
-  }
-  header .nav_item:hover{
-    border-bottom: 3px solid #64d6fd;
-    border-top: 3px solid #64d6fd;;
-  }
+    text-transform: uppercase;
+    transition: 0.3s ease;
+   }
+   button:hover{
+    background-color: #3a3833;
+   }
 
-  a {
-    text-decoration: none;
-    color: currentColor;
-  }
-  a:hover {
-    color:currentColor;
-  }
-  
-  
-  main {
-    padding: 20px;
-  }
-  
-  .products {
-    margin-bottom: 2rem;
-  }
-  
-  .product {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
-  
-  .product img {
-    width: 200px;
-    height: 200px;
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  .product h3 {
+
+   .navbar {
     font-size: 18px;
-    margin-bottom: 5px;
+    max-width: 100%;
+    top:0;
+    left: 0;
+   }
+   .nav-item {
+    transition: 0.5s;
+   }
+   .nav-item:hover {
+    transform: scale(1.3);
+   }
+  .cart_icon {
+    margin-left: 1em; 
+    margin: 4px 16px;
+    transition: 0.5s;
+    
   }
+  .cart_icon:hover{
+   
+    transform: scale(1.4);
+  } 
   
-  .product p {
-    color: #888;
+  .nav-link{
+    margin: 0 10px;
+  } 
+
+  @media only screen and (max-width:991px) {
+  
+    #navbarSupportedContent > ul {
+      margin: 1rem;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+    }
+    #navbarSupportedContent > ul > li:nth-child(n) > a
+    {
+      padding: 10px 0;
+    }
+  
+
   }
-  
-  .product button {
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+  #home {
+    width: 100%;
+    height:  90vh;
+    background-size: cover;
+    background-position: top 10px center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
-  
-  .cart {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 5px;
+
+  #home span{
+    color:coral;
   }
-  
-  .cart ul {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 10px;
-  }
-  
-  .cart button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  footer p {
-    font-size: 14px;
-  }
-  
+/* #new .one img{
+background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+}
+
+#new .one .details {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: 0.3s easy;
+} */
+ 
+
+ 
