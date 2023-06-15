@@ -187,7 +187,7 @@ export const adminDeleteItem = async (req,res) =>{
         const category = await store.categories.find(cat=> cat.name === categoryName)
 
 
-        const newArray = await category.items.filter(item => item._id === itemId)
+        const newArray = await category.items.filter(item => item._id.toString() !== itemId)
 
         category.items = await newArray
 
@@ -222,7 +222,10 @@ export const adminDeleteCategory = async (req, res) =>{
         const category = await store.categories.find(cat=>cat.name === categoryName)
 
 
-        await category.items.forEach(item=> Item.findByIdAndDelete(item._id))
+        /* NOT WORKING */
+        await category.items.forEach(item=> {
+            return Item.findByIdAndDelete(item)
+        })
 
 
         const newCategoryArray = await store.categories.filter(cat=> cat.name !== categoryName)
