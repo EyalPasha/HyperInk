@@ -3,10 +3,7 @@ import {adminAddItem,
     adminEditInventory,
     adminEditItem,
     adminDeleteItem,
-    adminDeleteCategory,
-    adminGetAllCategories,
-    adminGetCaregoryByName,
-    adminGetItemByName
+    adminDeleteCategory
 } from "../controllers/admin.js";
 
 const router = express.Router()
@@ -16,9 +13,7 @@ const router = express.Router()
 router.post('/add-item',adminAddItem)
 
 /* READ */
-router.get('/get-all-categories', adminGetAllCategories) //returns all category names and array of items id's
-router.get('/get-category-by-name',adminGetCaregoryByName ) //return all items of category by name
-router.get('/get-item-by-name',adminGetItemByName ) //return item by name
+
 
 
 /* UPDATE */
