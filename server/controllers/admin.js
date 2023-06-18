@@ -3,26 +3,20 @@ import Store from "../models/Store.js";
 
 const storeId = '64804288b9a6f4d69455104f' //Store id is hard coded to the code
 
+/* CREATE */
 export const adminAddItem = async (req,res) =>{
 
     try{
 
-
         const {name, category, colors, imageUrl, description} = req.body //colors is an array of sizes and stock
-
-
 
         //fnd the store
         const store = await Store.findById(storeId)
-
-
 
         //if store not exist return
         if(!store){
             return res.status(404).json({message: "Store not found"})
         }
-
-
 
         //check if item is already exist
         const exist = await Item.findOne({name: name})
@@ -82,6 +76,83 @@ export const adminAddItem = async (req,res) =>{
 
 }
 
+/* READ */
+export const adminGetAllCategories = async (req,res) => {
+
+    try {
+
+        //find the store
+        const store = await Store.findById(storeId)
+        //if store not exist return
+        if (!store) {
+            return res.status(404).json({message: "Store not found"})
+        }
+
+
+
+        return res.status(200).json(store.categories)
+
+
+    }catch(error){
+        return res.status(500).json({error})
+    }
+}
+
+export const adminGetCaregoryByName = async (req,res) =>{
+    try {
+
+        const {categoryName} = req.body
+        //find the store
+        const store = await Store.findById(storeId)
+        //if store not exist return
+        if (!store) {
+            return res.status(404).json({message: "Store not found"})
+        }
+
+        const category = await store.categories.find(cat => cat.name === categoryName)
+
+        if(!category){
+            return res.status(404).json({message: "Category not found"})
+        }
+
+        const allItems = await Promise.all(
+            category.items.map(itemId=> Item.findById(itemId))
+        )
+
+
+        return res.status(200).json(allItems)
+
+
+    }catch(error){
+        return res.status(500).json({error})
+    }
+}
+
+export const adminGetItemByName = async (req, res) =>{
+
+    try{
+
+        const {itemName} = req.body
+        //find the store
+        const store = await Store.findById(storeId)
+        //if store not exist return
+        if (!store) {
+            return res.status(404).json({message: "Store not found"})
+        }
+
+
+        const item = await Item.findOne({name: itemName})
+
+        return res.status(200).json(item)
+
+    }catch(error){
+        return res.status(500).json({error})
+    }
+
+}
+
+
+/* UPDATE */
 export const adminEditItem = async (req,res) =>{
 
 
@@ -164,6 +235,8 @@ export const adminEditInventory = async (req, res) =>{
 
 }
 
+
+/* DELETE */
 export const adminDeleteItem = async (req,res) =>{
 
     try{
