@@ -10,3 +10,10 @@
     background-color: blueviolet;
     min-height: 400px;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
