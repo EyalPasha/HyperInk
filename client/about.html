@@ -11,45 +11,109 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg py-2 fixed-top bg-body-tertiary nav_bar">
-      <div class="container">
-        <a class="navbar-brand" href="#"> <img src="images/hyperink-logo.png"  width="80em"  alt="Logo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse p-3" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="products.html">Shop</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
-            </li>
+   <!-- Navigation Bar-->
+  <nav class="navbar navbar-expand-lg py-2 fixed-top bg-body-tertiary nav_bar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"> <img src="images/hyperink-logo1.png"  alt="Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse p-3" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <li class="nav-item cart_icon">
-              <a href="#"><img src="images/cart_icon.png" width="30em" alt="Cart icon"></a>
-            </li>
-            
-        </div>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact Us</a>
+          </li>
+          <li class="nav-item cart_icon">
+            <a href="#"><img src="images/cart_icon.png" width="30em" alt="Cart icon"></a>
+          </li>
+        
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+         
+          
       </div>
-    </nav>
+    </div>
+  </nav> 
   </header>
 <main>
     <h1>About Us</h1>
 </main>
 <script type="module" src="script.js"></script>
 </body>
-  <footer>
-    <p>&copy; 2023 Online Shop. All rights reserved.</p>
+   <!-- Footer-->
+   <footer class=" py-5">
+    <div class="row container mx-auto pt-5">
+      <div class="footer-one col-lg-3 col-md-6 col-12">
+        <img class="mb-3" src="images/hyperink-logo1.png" alt="hyperink logo">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque natus mollitia perferendis unde esse ipsum. </p>
+      </div>
+      <div class="footer-one col-lg-3 col-md-6 col-12">
+        <h5 class="pb-2">Featured</h5>
+        <ul class="text-uppercase list-unstyled text-decoration-none">
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">Shirts</a></li>
+          <li><a href="#">Pants</a></li>
+          <li><a href="#">Shoes</a></li>
+        </ul>
+      </div>
+      <div class="footer-one col-lg-3 col-md-6 col-12">
+        <h5 class="pb-2">Contat us</h5>
+        <div>
+          <h6 class="text-uppercase">Address</h6>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div>
+          <h6 class="text-uppercase">Phone</h6>
+          <p>0500000000</p>
+        </div>
+        <div>
+          <h6 class="text-uppercase">Email</h6>
+          <p>costumer-support@hyperink.com</p>
+        </div>
+      </div>
+      <div class="footer-one col-lg-3 col-md-6 col-12">
+        <h5 class="pb-2">Social</h5>
+        <div class="col">
+          <div class="col-lg-3 col-md-6 col-sm-12">
+
+          <a href="https://www.facebook.com/" target="_blank"> <img class="img-fluid w-50 h-100 m-2" src="images/facebook-icon.png" alt="facebook icon"> </a>
+
+          <a href="https://www.twitter.com/" target="_blank"> <img class="img-fluid w-50 h-100 m-2" src="images/twitter-icon.png" alt="twitter icon"> </a>
+
+            <a href="https://www.instagram.com/" target="_blank"><img class="img-fluid w-50 h-100 m-2" src="images/instagram-icon.png" alt="instagram icon"> </a>
+
+              <a href="https://www.tiktok.com/" target="_blank"> <img class="img-fluid w-50 h-100 m-2" src="images/tiktok-logo.png" alt="tik-tok icon"> </a>
+          </div>
+      </div>
+
+        <div class="copyright mt-5">
+          <div class="row container mx-auto">
+            <div class="row-lg-3 row-md-6 row-12 text-nowrap">
+              <p>Hyperink eCommerce © 2023. All Rights Reserved </p>
+            </div>
+            <div class="row-lg-3 row-md-6 row-12 mt-2 justify-content-start">
+              <img class="m-1" src="images/visa-logo.png" alt="visa logo">
+              <img class="m-1" src="images/masterCard.png" alt="MasterCard logo">
+              <img class="m-1" src="images/PayPal.png" alt="PayPal logo">
+              <img class="m-1" src="images/applePay.png" alt="ApplePay logo">
+            </div>
+          </div>
+        </div>
+        
+    </div>
+
   </footer>
