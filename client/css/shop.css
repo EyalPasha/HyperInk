@@ -1,0 +1,12 @@
+.products {
+    background-color: aqua;
+    min-height: 400px;
+}
+.cart {
+    background-color: brown;
+    min-height: 400px;
+}
+.filters {
+    background-color: blueviolet;
+    min-height: 400px;
+}
