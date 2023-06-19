@@ -47,6 +47,10 @@
     background-color: #3a3833;
    }
 
+   .shopbtn {
+    text-decoration: none;
+    color:#ffffff;
+   }
 
    .navbar {
     font-size: 18px;
