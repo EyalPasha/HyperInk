@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <script>
+        const hanldeSubmit = () =>{
+            alert("1")
+        }
+    </script>
+</head>
+<body>
+<form id="productForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+  </div>
+  <div>
+    <label for="category">Category:</label>
+    <input type="text" id="category" required>
+  </div>
+  <div>
+    <label for="imageUrl">Image URL:</label>
+    <input type="text" id="imageUrl" required>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" required></textarea>
+  </div>
+  <div id="colorContainer">
+    <div class="colorInput">
+      <label for="color1">Color:</label>
+      <input type="text" class="color-input" required>
+
+      <div class="sizeContainer">
+        <div class="sizeInput">
+          <label for="size1">Size:</label>
+          <input type="text" class="size-input" required>
+  
+          <label for="stock1">Stock:</label>
+          <input type="number" class="stock-input" required>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+<script src="/client/js/products.js"></script>
+</body>
+</html>
