@@ -32,7 +32,6 @@ export const getUserHistory = async (req, res) => { //returns all user transacti
 
     const user = await User.findById(userId)
 
-    console.log(user)
 
     const userTransactions = await Promise.all(
 
