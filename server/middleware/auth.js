@@ -4,6 +4,8 @@ export const verifyUserToken = async (req,res, next) =>{
 
 
     try {
+
+
         const {token} = await req.cookies;
 
         if (!token) {
@@ -19,12 +21,14 @@ export const verifyUserToken = async (req,res, next) =>{
 
                 const user = userData
 
+
+
                 if(!user){
                     return res.status(403).send({ message: "Access Denied"});
                 }
 
 
-                req.user = user
+                req.user.id = user
                 next();
             });
         }

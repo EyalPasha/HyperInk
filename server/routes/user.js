@@ -3,8 +3,8 @@ import { getUser, getUserHistory, addToCart, makePurchase, removeFromCart } from
 
 const router = express.Router();
 
-router.get('/get-user/:id', getUser)
-router.get('/get-user-history/:id', getUserHistory)
+router.get('/get-user', getUser)
+router.get('/get-user-history', getUserHistory)
 
 
 router.patch('/add-to-cart', addToCart)

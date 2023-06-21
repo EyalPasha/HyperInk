@@ -1,29 +1,47 @@
 import User from "../models/User.js";
 import Cart from "../models/Cart.js";
 import Item from "../models/Item.js";
+import Transaction from "../models/Transaction.js";
+
 
 
 export const getUser = async (req, res) => { // returns the user.
   try {
-    const user = await User.findById(req.params.id)
-    if (!user) {
-            return res.status(404).json({message: "User not found"})
-    }
+
+    const userId = '64929a568726af26b72bb17d'
+
+    const user = await User.findById(userId)
+
     return res.status(200).json(user)
+
   } catch (error) {
+
     return res.status(500).json({error})
   }
 }
 
 
 export const getUserHistory = async (req, res) => { //returns all user transactions
+
   try {
-    const user = await User.findById(req.params.id).populate('transaction')
-    if (!user) {
-            return res.status(404).json({message: "User not found"})
-    }
-    return res.status(200).json(user.transaction)
+
+    //this param supposed to get from middleware
+    const userId = '64929a568726af26b72bb17d'
+
+    const user = await User.findById(userId)
+
+    console.log(user)
+
+    const userTransactions = await Promise.all(
+
+        user.transactions.map(transId=> Transaction.findById(transId))
+    )
+
+
+    return res.status(200).json(userTransactions)
+
   } catch (error) {
+
         return res.status(500).json({error})
 
   }
@@ -168,3 +186,4 @@ const calculateTotalCost = (items) => {
   }
   return total
 }
+
