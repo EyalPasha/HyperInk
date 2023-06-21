@@ -91,9 +91,9 @@
     {
       padding: 10px 0;
     }
-
-  
-
+    #social_icon1, #social_icon2, #social_icon3, #social_icon4{
+         max-width: 4em;
+    }
   }
   #home {
     width: 100%;
