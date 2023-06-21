@@ -8,11 +8,9 @@ import Transaction from "../models/Transaction.js";
 export const getUser = async (req, res) => { // returns the user.
   try {
 
-    const user = await User.findById(userId)
+    const userId = '64929a568726af26b72bb17d'
 
-    if (!user) {
-            return res.status(404).json({message: "User not found"})
-    }
+    const user = await User.findById(userId)
 
     return res.status(200).json(user)
 
@@ -32,6 +30,7 @@ export const getUserHistory = async (req, res) => { //returns all user transacti
 
     const user = await User.findById(userId)
 
+    console.log(user)
 
     const userTransactions = await Promise.all(
 
@@ -187,3 +186,4 @@ const calculateTotalCost = (items) => {
   }
   return total
 }
+
