@@ -43,6 +43,7 @@
 </form>*/
 
 
+const prefix = 'http://localhost:3001/';
 
 function addProduct() {
 
@@ -93,15 +94,34 @@ function addProduct() {
     description: description,
     colors: colors
   };
+  console.log("1");
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', `${prefix}/api/admin/add-item`);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      const data = JSON.parse(xhr.responseText);
+      console.log(data);
+    } else {
+      console.error('Error:', xhr.status);
+    }
+  };
+  xhr.onerror = function () {
+    console.error('Request failed');
+  };
+  xhr.send(JSON.stringify(product));
+
 
   // Send the new product object to the server
-  fetch('/api/admin/add-item', {
+  /*fetch(`${prefix}/api/admin/add-item`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(product)
-  })
+  })*\
+
     .then(response => response.json())
     .then(data => {
       // server response
@@ -110,11 +130,12 @@ function addProduct() {
     .catch(error => {
       console.error('Error:', error);
     });
+    console.log("2");
 }
 
 const form = document.getElementById('productForm');
 form.addEventListener('submit', function (event) {
-  event.preventDefault(); // Prevent the page from reloading or refreshing
+  console.log('baa');
   addProduct();
 });
 
@@ -134,7 +155,7 @@ form.addEventListener('submit', function (event) {
   </ul>
 </div>*/
 
-function deleteProduct(itemId) {
+/*function deleteProduct(itemId) {
 
   // tell the server to delete the product
   fetch(`/api/admin/delete-item/${itemId}`, {
@@ -170,7 +191,7 @@ const deleteButtons = document.querySelectorAll('.delete-button');
 deleteButtons.forEach(button => {
   button.addEventListener('click', function (event) {
     event.preventDefault();
-
+console.log('aa');
     const itemId = button.dataset.itemId;
 
     const confirmDelete = confirm('Are you sure you want to delete this product?');
@@ -194,7 +215,7 @@ deleteButtons.forEach(button => {
   <button class="edit-button" data-product-id="2">Edit Product</button>
 </form>*/
 
-function editProduct(event) {
+/*function editProduct(event) {
   event.preventDefault();
 
   const itemId = button.dataset.itemId;
@@ -243,4 +264,4 @@ editButtons.forEach(button => {
     }
   });
 });
-
+*/}
