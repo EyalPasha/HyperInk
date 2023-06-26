@@ -12,7 +12,7 @@ const TransactionSchema = new Schema({
         },
         items: [
             {
-                type: Schema.Tsypes.ObjectId,
+                type: Schema.Types.ObjectId,
                 ref: "Item",
 
             }
