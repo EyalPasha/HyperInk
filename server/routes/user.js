@@ -9,6 +9,6 @@ router.get('/get-user-history', getUserHistory)
 
 router.patch('/add-to-cart', addToCart)
 router.patch('/make-purchase', makePurchase)
-router.patch('/remove-from-cart', removeFromCart)
+router.patch('/remove-from-cart', removeFromCart);
 
 export default router;
