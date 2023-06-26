@@ -10,13 +10,9 @@ const TransactionSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "User"
         },
-        store: {
-            type: Schema.Types.ObjectId,
-            ref: "Store"
-        },
         items: [
             {
-                type: Schema.Types.ObjectId,
+                type: Schema.Tsypes.ObjectId,
                 ref: "Item",
 
             }

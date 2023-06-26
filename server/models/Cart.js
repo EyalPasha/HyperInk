@@ -1,35 +1,46 @@
 import mongoose from "mongoose";
 const {Schema} = mongoose;
 
-const CartSchema = new Schema({
-
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: "User"
+const CartSchema = new Schema(
+  {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    items: [
+      {
+        id: {
+          type: Schema.Types.ObjectId,
+          ref: "Item",
         },
-        items: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Item",
-                count:{
-                    type: Number,
-                    min: 0,
-                    max: 10
-                }
-            }
-        ],
-        totalCost:{
-            type: Number,
-            min: 0
+        count: {
+          type: Number,
+          min: 0,
+          max: 10,
         },
-        notes:{
-            type: String,
-            min: 0,
-            max: 256
-        }
-
-
-    }, { timestamps: true }
+        price: {
+          type: Number,
+          min:0,
+        },
+        color: {
+        type: String
+        },
+        size: {
+           type: String
+                },
+      },
+    ],
+    totalCost: {
+      type: Number,
+      min: 0,
+    },
+    notes: {
+      type: String,
+      min: 0,
+      max: 256,
+    },
+  },
+  { timestamps: true }
 );
 
 

@@ -34,7 +34,6 @@ export const adminAddItem = async (req,res) =>{
             colors,
             imageUrl,
             description
-
         })
 
         //find the category of the item
