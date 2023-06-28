@@ -126,7 +126,7 @@ export const adminEditInventory = async (req, res) =>{
 
         //find the store
         const store = await Store.findById(storeId)
-
+        console.log("1")
 
         //if store not exist return
         if(!store){
@@ -135,15 +135,16 @@ export const adminEditInventory = async (req, res) =>{
 
         const item = await Item.findById(itemId)
 
-        //console.log("1")
+        console.log("2")
 
-        const itemColor = await item.colors.find(col => col.colorName.name === color)
+        const itemColor = await item.colors.find(col => col.colorName === color)
 
-        //console.log(itemColor.colorName)
+        console.log("3")
+         console.log(itemColor)
 
-        const itemSize =  itemColor.colorName.size.find(si => si.name === size)
+        const itemSize =  await itemColor.size.find(si => si.sizeName === size)
 
-        console.log(itemSize)
+       // console.log(itemSize)
 
         itemSize.stock = newStock
 
@@ -220,9 +221,10 @@ export const adminDeleteCategory = async (req, res) =>{
 
 
         /* NOT WORKING */
-        await category.items.forEach(item=> {
-            return Item.findByIdAndDelete(item)
-        })
+       await Promise.all(category.items.map(async (item) => {
+         console.log(item);
+         await Item.findByIdAndDelete(item);
+       }));
 
 
         const newCategoryArray = await store.categories.filter(cat=> cat.name !== categoryName)

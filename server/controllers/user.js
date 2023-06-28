@@ -52,37 +52,34 @@ export const addToCart = async (req, res) => {
   const { userId, itemId, color, size, count } = req.body;
 
   try {
-    console.log("Received request to add item to cart:", itemId);
+    console.log("1");
 
     const user = await User.findById(userId);
-    console.log("User found:", user);
+    console.log("2");
+    let cart = null;
+    if(user.cart===null || user.cart===undefined){
+     cart = await Cart.create({ user: userId, items: [], totalCost: 0, notes: "" });
 
-    let cart = await Cart.findOne({ user: userId });
-    console.log("Cart found:", cart);
-
-    if (!cart) {
-      console.log("Creating new cart for user:", userId);
-      cart = Cart.create({ user: userId, items: [], totalCost: 0, notes: "" });
-      user.cart=cart;
-      user.save();
+    } else{
+    console.log(user.cart);
+    cart= await Cart.findById(user.cart);
     }
-
     const item = await Item.findById(itemId);
     if (!item) {
-      console.log("Item not found", itemId);
+      console.log("3");
       return res.status(404).json({ message: "Invalid item" });
     }
 
     const colorObj = item.colors.find((c) => c.colorName === color);
     if (!colorObj) {
-      console.log("Color not found:", color);
-      return res.status(404).json({ message: "Invalid color" });
+      console.log("4");
+      return res.status(404).json("5");
     }
 
     const sizeObj = colorObj.size.find((s) => s.sizeName === size);
     if (!sizeObj) {
-      console.log("Size not found:", size);
-      return res.status(404).json({ message: "Invalid size" });
+      console.log("6");
+      return res.status(404).json("7");
     }
 
     const existingItemIndex = cart.items.findIndex(
@@ -92,10 +89,10 @@ export const addToCart = async (req, res) => {
         item.size === size
     );
     if (existingItemIndex !== -1) {
-      console.log("Existing item found in cart. Updating count:", cart.items[existingItemIndex]);
+      console.log("7");
       cart.items[existingItemIndex].count += count;
     } else {
-      console.log("Adding new item to cart:", itemId);
+      console.log("8");
       cart.items.push({
         id: itemId,
         color: color,
@@ -105,12 +102,15 @@ export const addToCart = async (req, res) => {
       });
     }
     cart.totalCost = cart.totalCost+(sizeObj.price || item.price)*count;
-    console.log("Updated cart totalCost:", cart.totalCost);
+    console.log("9");
 
     await cart.save();
 
-    console.log("Cart saved:", cart);
-
+    console.log("10");
+    console.log(user);
+    console.log(cart);
+    user.cart=cart._id;
+    user.save();
     return res.status(200).json(cart);
   } catch (error) {
     console.log("Error occurred:", error);
@@ -219,8 +219,6 @@ export const resetCart = async (req, res) => {
     return res.status(500).json({ error })
   }
 }
-
-
 
 export const makePurchase = async (req, res) => {
   const { userId } = req.body;
