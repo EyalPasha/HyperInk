@@ -59,10 +59,10 @@
     left: 0;
    }
    .nav-item {
-    transition: 0.5s;
+    transition: 0.3s;
    }
    .nav-item:hover {
-    transform: scale(1.3);
+    transform: scale(1.15);
    }
   .cart_icon {
     margin-left: 1em; 
@@ -79,7 +79,7 @@
     margin: 0 10px;
   } 
 
-  @media only screen and (max-width:991px) {
+  @media only screen and (max-width:1199px) {
   
     #navbarSupportedContent > ul {
       margin: 1rem;
@@ -108,6 +108,10 @@
 
   #home span{
     color:coral;
+  }
+
+  #navbar{
+    padding: 0px 0px !important;
   }
 /* #new .one img{
 background-position: center center;
