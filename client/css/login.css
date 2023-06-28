@@ -29,3 +29,15 @@
         padding: 20px;
     }
 }
+
+
+@media (max-width: 1155px) {
+  .navbar-expand-custom .navbar-nav {
+    flex-direction: column;
+    margin-top: 10px;
+  } 
+  .navbar-expand-custom .navbar-nav .nav-link {
+    padding: 8px;
+  }
+}
+
