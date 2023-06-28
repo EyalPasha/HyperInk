@@ -1,48 +1,3 @@
-// HTML form for add a product in admin page
-
-/*<form id="productForm">
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" required>
-  </div>
-
-  <div>
-    <label for="category">Category:</label>
-    <input type="text" id="category" required>
-  </div>
-
-  <div>
-    <label for="imageUrl">Image URL:</label>
-    <input type="text" id="imageUrl" required>
-  </div>
-
-  <div>
-    <label for="description">Description:</label>
-    <textarea id="description" required></textarea>
-  </div>
-
-  <div id="colorContainer">
-    <div class="colorInput">
-      <label for="color1">Color:</label>
-      <input type="text" class="color-input" required>
-  
-      <div class="sizeContainer">
-        <div class="sizeInput">
-          <label for="size1">Size:</label>
-          <input type="text" class="size-input" required>
-  
-          <label for="stock1">Stock:</label>
-          <input type="number" class="stock-input" required>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <button type="button" id="addColorButton">Add Color</button>
-  <button type="submit">Submit</button>
-</form>*/
-
-
 const prefix = 'http://localhost:3001/';
 
 function addProduct() {
@@ -94,44 +49,6 @@ function addProduct() {
     description: description,
     colors: colors
   };
-  console.log("1");
-
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', `${prefix}/api/admin/add-item`);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      const data = JSON.parse(xhr.responseText);
-      console.log(data);
-    } else {
-      console.error('Error:', xhr.status);
-    }
-  };
-  xhr.onerror = function () {
-    console.error('Request failed');
-  };
-  xhr.send(JSON.stringify(product));
-
-
-  // Send the new product object to the server
-  /*fetch(`${prefix}/api/admin/add-item`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(product)
-  })*\
-
-    .then(response => response.json())
-    .then(data => {
-      // server response
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-    console.log("2");
-}
 
 const form = document.getElementById('productForm');
 form.addEventListener('submit', function (event) {

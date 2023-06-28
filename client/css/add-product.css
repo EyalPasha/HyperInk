@@ -84,4 +84,48 @@ body {
 .pro .description p {
    font-size: 18px;
 }
+  
+  label, input, textarea {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="submit"], button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button#deleteButton {
+    background-color: #dc3545;
+    margin-top: 12px;
+  }
+
+  .fal  {
+    padding-left: 50px;
+  }
+
+  .material-icons-sharp {
+    padding-left: 50px;
+  } 
+
+  #productForm {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .icons-container {
+    display: flex;
+    gap: 1px; 
+  }
+  
+
+
+
+  
 

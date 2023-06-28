@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Products</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <link rel="stylesheet" href="/client/css/add-product.css">  
 </head>
@@ -28,6 +29,7 @@
             </div>
             <p>$19.99 USD</p>
           </div>
+          <span class="material-icons-sharp">edit</span>
           <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
         </div>
         <div class="pro">
@@ -44,6 +46,7 @@
             </div>
             <p>$14.99 USD</p>
           </div>
+          <span class="material-icons-sharp">edit</span>
           <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
         </div>
         <div class="pro">
@@ -60,6 +63,7 @@
             </div>
             <p>$13.99 USD</p>
           </div>
+          <span class="material-icons-sharp">edit</span>
           <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
         </div>
         <div class="pro">
@@ -76,6 +80,7 @@
               </div>
               <p>$13.99 USD</p>
             </div>
+            <span class="material-icons-sharp">edit</span>
             <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
           </div>
           <div class="pro">
@@ -92,6 +97,7 @@
               </div>
               <p>$13.99 USD</p>
             </div>
+            <span class="material-icons-sharp">edit</span>
             <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
           </div>
           <div class="pro">
@@ -108,6 +114,7 @@
               </div>
               <p>$13.99 USD</p>
             </div>
+            <span class="material-icons-sharp">edit</span>
             <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
           </div>
           <div class="pro">
@@ -124,8 +131,42 @@
               </div>
               <p>$13.99 USD</p>
             </div>
-            <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+            <div class="icons-container">
+              <span class="material-icons-sharp">edit</span>
+              <span class="material-icons-sharp">delete</span>
+              <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+            </div>
           </div>
+    </div>
+</section>
+
+<!-- Add/Delete Product Form -->
+<section class="add-product">
+  <form id="productForm">
+    <label for="name"><b>Product Name:</b></label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="category"><b>Category:</b></label>
+    <input type="text" id="category" name="category">
+    
+    <label for="colors"><b>Color:</b></label>
+    <input type="text" id="color-input" name="colors">
+  
+    <label for="colors"><b>Size:</b></label>
+    <input type="text" id="size-input" name="size">
+  
+    <label for="colors"><b>Stock:</b></label>
+    <input type="text" id="stock-input" name="stock">
+    
+    <label for="imageUrl"><b>Image URL:</b></label>
+    <input type="text" id="imageUrl" name="imageUrl">
+    
+    <label for="description"><b>Description:</b></label>
+    <textarea id="description" name="description"></textarea>
+  
+    <button type="submit"><b>Add Product</b></button>
+    <button type="button" id="deleteButton"><b>Delete Product</b></button>
+  </form>
 </section>
       <script src="/client/js/products.js"></script>
       <script src="/client/js/orders.js"></script>
