@@ -17,7 +17,7 @@ router.post('/add-item',adminAddItem)
 
 
 /* UPDATE */
-router.patch('/edit-item', adminEditItem)
+router.patch('/edit-item/', adminEditItem)
 router.patch('/edit-inventory', adminEditInventory)
 
 
