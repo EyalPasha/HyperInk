@@ -7,8 +7,11 @@ export const login = async (req, res) =>{
 
     try{
 
+        return res.status(200)
         //get email and password from frontend
         const { email, password} = req.body
+
+        console.log("arrived", email, password)
 
         //search for user
         const user = await User.findOne({email})
