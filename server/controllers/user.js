@@ -69,7 +69,7 @@ export const addToCart = async (req, res) => {
 
     const item = await Item.findById(itemId);
     if (!item) {
-      console.log("Item not found:", itemId);
+      console.log("Item not found", itemId);
       return res.status(404).json({ message: "Invalid item" });
     }
 
