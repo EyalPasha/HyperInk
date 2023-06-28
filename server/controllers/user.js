@@ -52,10 +52,11 @@ export const addToCart = async (req, res) => {
   const { userId, itemId, color, size, count } = req.body;
 
   try {
-    console.log("1");
+
 
     const user = await User.findById(userId);
-    console.log("2");
+
+
     let cart = null;
     if(user.cart===null || user.cart===undefined){
      cart = await Cart.create({ user: userId, items: [], totalCost: 0, notes: "" });
@@ -66,19 +67,19 @@ export const addToCart = async (req, res) => {
     }
     const item = await Item.findById(itemId);
     if (!item) {
-      console.log("3");
+
       return res.status(404).json({ message: "Invalid item" });
     }
 
     const colorObj = item.colors.find((c) => c.colorName === color);
     if (!colorObj) {
-      console.log("4");
+
       return res.status(404).json("5");
     }
 
     const sizeObj = colorObj.size.find((s) => s.sizeName === size);
     if (!sizeObj) {
-      console.log("6");
+
       return res.status(404).json("7");
     }
 
@@ -89,10 +90,10 @@ export const addToCart = async (req, res) => {
         item.size === size
     );
     if (existingItemIndex !== -1) {
-      console.log("7");
+
       cart.items[existingItemIndex].count += count;
     } else {
-      console.log("8");
+
       cart.items.push({
         id: itemId,
         color: color,
@@ -102,18 +103,18 @@ export const addToCart = async (req, res) => {
       });
     }
     cart.totalCost = cart.totalCost+(sizeObj.price || item.price)*count;
-    console.log("9");
+
 
     await cart.save();
 
-    console.log("10");
-    console.log(user);
-    console.log(cart);
+
     user.cart=cart._id;
     user.save();
+
     return res.status(200).json(cart);
+
   } catch (error) {
-    console.log("Error occurred:", error);
+    console.log(error);
     return res.status(500).json({ error });
   }
 };
