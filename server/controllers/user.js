@@ -62,7 +62,9 @@ export const addToCart = async (req, res) => {
 
     if (!cart) {
       console.log("Creating new cart for user:", userId);
-      cart = new Cart({ user: userId, items: [], totalCost: 0, notes: "" });
+      cart = Cart.create({ user: userId, items: [], totalCost: 0, notes: "" });
+      user.cart=cart;
+      user.save();
     }
 
     const item = await Item.findById(itemId);
@@ -219,61 +221,92 @@ export const resetCart = async (req, res) => {
 }
 
 
+
 export const makePurchase = async (req, res) => {
-  const { userId } = req.body
+  const { userId } = req.body;
 
   try {
-    const user = await User.findById(userId)
+    // Find the user
+    const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: "User not found" })
+      return res.status(404).json({ message: "User not found" });
     }
 
-    const cart = await Cart.findOne({ user: userId })
-    if (!cart) {
-      return res.status(404).json({ message: "Cart not found" })
+    // Get customer details from the user model
+    const { firstName, lastName, address } = user;
+
+    // Find the user's cart
+    let cart = await Cart.findOne({ user: userId });
+    if (!cart || cart.items.length === 0) {
+      return res.status(400).json({ message: "Cart is empty" });
     }
 
-    if (cart.items.length === 0) {
-      return res.status(400).json({ message: "Cart is empty" })
-    }
+    // Create a new transaction object
+    const transaction = new Transaction({
+      customerName: `${firstName} ${lastName}`,
+      address,
+      products: [],
+      totalCost: 0,
+    });
 
-    const transaction = {
-      items: cart.items,
-      totalCost: cart.totalCost,
-    }
+    // Declare the selectedItem variable outside the loop
+    let selectedItem;
 
-    user.transaction.push(transaction)
-    await user.save()
-
+    // Update the transaction with purchased items from the cart
     for (const item of cart.items) {
-      const itemInCart = await Item.findById(item.itemId)
-      if (!itemInCart) {
-        return res.status(404).json({ message: "Item not found" })
+      const { id, color, size, count, price } = item;
+
+      // Find the item in the database
+      selectedItem = await Item.findById(id);
+      if (!selectedItem) {
+        return res.status(404).json({ message: "Invalid item" });
       }
 
-      for (const color of itemInCart.colors) {
-        for (const size of color.size) {
-          const selectedSize = item.selectedSize
-          if (color.colorName === item.selectedColor && size.sizeName === selectedSize) {
-            size.stock -= item.quantity
-            break
-          }
-        }
+      // Find the color and size in the item
+      const colorObj = selectedItem.colors.find((c) => c.colorName === color);
+      if (!colorObj) {
+        return res.status(404).json({ message: "Invalid color" });
       }
 
-      await itemInCart.save()
+      const sizeObj = colorObj.size.find((s) => s.sizeName === size);
+      if (!sizeObj) {
+        return res.status(404).json({ message: "Invalid size" });
+      }
+
+      // Calculate the total cost for the current item
+      const itemTotalCost = price * count;
+
+      // Update the transaction with the purchased item details
+      transaction.products.push({
+        name: selectedItem.name,
+        count,
+        size,
+      });
+      transaction.totalCost += itemTotalCost;
+
+      // Update the inventory for the purchased item
+      sizeObj.stock -= count;
     }
 
-    cart.items = []
-    cart.totalCost = 0
-    cart.notes = ""
+    // Save the changes to the selectedItem and mark it as modified
+    await selectedItem.save();
+    await selectedItem.markModified('colors');
 
-    await cart.save()
+    // Reset the cart
+    cart.items = [];
+    cart.totalCost = 0;
+    cart.notes = "";
 
-    return res.status(200).json({ message: "Purchase completed successfully" })
+    // Save the transaction and updated cart
+    await transaction.save();
+    await cart.save();
+
+    // Return the updated cart and transaction
+    return res.status(200).json({ cart, transaction });
   } catch (error) {
-    return res.status(500).json({ error })
+    return res.status(500).json({ error });
   }
-}
+};
+
 
 

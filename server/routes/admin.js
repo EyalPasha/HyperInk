@@ -17,8 +17,8 @@ router.post('/add-item',adminAddItem)
 
 
 /* UPDATE */
-router.patch('/edit-item/:itemId', adminEditItem)
-router.patch('/edit-inventory/:itemId', adminEditInventory)
+router.patch('/edit-item', adminEditItem)
+router.patch('/edit-inventory', adminEditInventory)
 
 
 /* DELETE */
