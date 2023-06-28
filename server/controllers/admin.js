@@ -84,8 +84,7 @@ export const adminEditItem = async (req,res) =>{
 
     try{
 
-        const {itemId} = req.params
-        const{newName, newImageUrl, newDescription} = req.body
+        const{itemId,newName, newImageUrl, newDescription} = req.body
 
         //find the store
         const store = await Store.findById(storeId)
@@ -123,8 +122,7 @@ export const adminEditInventory = async (req, res) =>{
 
     try{
 
-        const {itemId} = req.params
-        const{color, size, newStock} = req.body
+        const{itemId, color, size, newStock} = req.body
 
         //find the store
         const store = await Store.findById(storeId)
