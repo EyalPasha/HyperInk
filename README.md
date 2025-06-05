@@ -35,7 +35,7 @@
 
 * **Node.js** – Backend runtime
 * **Express.js** – API routing and business logic
-* **SQLite / Supabase** – Storage and real-time data (based on implementation)
+* **Supabase** – Storage and real-time data
 * **JWT Auth** – Session handling and role-based access
 
 ---
